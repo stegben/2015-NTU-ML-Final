@@ -18,9 +18,9 @@ def main():
     print(train_x)
     print(np.sum(train_y))
 
-    clf = RandomForestClassifier(n_estimators=500,
-                                 criterion='entropy',
-                                 max_features='sqrt',
+    clf = RandomForestClassifier(n_estimators=10000,
+                                 criterion='gini',
+                                 max_features=0.3,
                                  max_depth=None,
                                  oob_score=False,
                                  n_jobs=-1,
