@@ -1,4 +1,6 @@
+import random
 import numpy as np
+import math
 
 def read_data(fname, train_mode=True):
     x = []
@@ -37,3 +39,11 @@ def write_answer(fname, ID, pred, print_prob):
     with open(fname, "w") as f:
         for i, p in zip(ID, pred):
             f.write(i + "," + p + "\n")
+
+
+def split_data(x, y, val_ratio):
+    ind = range(x.shape[0])
+    ind = random.shuffle(ind)
+    cut_pt = math.ceil(len(ind) / val_ratio)
+    return x[ind[cut_pt:],], y[ind[cut_pt:]], x[ind[:cut_pt], :], y[ind[:cut_pt]]
+
