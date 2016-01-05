@@ -20,13 +20,14 @@ def main():
 
     clf = RandomForestClassifier(n_estimators=10000,
                                  criterion='gini',
-                                 max_features=0.3,
+                                 max_features=auto,
                                  max_depth=None,
-                                 oob_score=False,
+                                 oob_score=True,
                                  n_jobs=-1,
                                  verbose=1)
 
     clf.fit(X=train_x, y=train_y)
+    print(clf.oob_score_)
     print(clf.score(train_x, train_y))
     pred = clf.predict(X=test_x)
     pred_prob = clf.predict_proba(X=test_x)[:,1]
